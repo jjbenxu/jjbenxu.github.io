@@ -148,9 +148,30 @@ section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--rule)}
 .label{font-family:var(--mono); font-size:.68rem; letter-spacing:.12em;
   text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.35rem}
 
-/* featured project */
-.feature{background:var(--surface); border:1px solid var(--rule); border-radius:4px;
-  box-shadow:var(--shadow); overflow:hidden}
+/* project accordions — native <details>, no JS */
+.proj{background:var(--surface); border:1px solid var(--rule); border-radius:4px;
+  box-shadow:var(--shadow); margin-bottom:1.1rem; overflow:hidden}
+.proj[open]{border-color:var(--gold)}
+.proj>summary{list-style:none; cursor:pointer; padding:clamp(20px,3.2vw,30px);
+  display:flex; gap:1.25rem; align-items:flex-start; justify-content:space-between;
+  transition:background .15s}
+.proj>summary::-webkit-details-marker{display:none}
+.proj>summary::marker{content:""}
+.proj>summary:hover{background:var(--gold-soft)}
+.proj>summary:focus-visible{outline:2px solid var(--gold); outline-offset:-3px}
+.proj-sum{min-width:0}
+.proj-sum h3{margin:.2rem 0 .5rem}
+.proj-sum .meta{margin-bottom:.7rem}
+.proj-sum .teaser{font-size:.95rem; color:var(--ink-soft); margin:0}
+.chev{flex:none; width:30px; height:30px; border-radius:50%; border:1px solid var(--rule);
+  display:grid; place-items:center; color:var(--gold); font-family:var(--mono);
+  font-size:1.05rem; line-height:1; margin-top:.25rem;
+  transition:transform .2s ease, background .15s}
+.proj[open] .chev{transform:rotate(45deg); background:var(--gold-soft); border-color:var(--gold)}
+.proj-body{border-top:1px solid var(--rule)}
+.hint{font-size:.85rem; color:var(--ink-faint); margin-top:-.4rem; margin-bottom:1.4rem}
+
+/* featured project internals */
 .feature-head{padding:clamp(22px,3.4vw,34px); border-bottom:1px solid var(--rule)}
 .feature-body{display:grid; grid-template-columns:1fr; gap:0}
 @media(min-width:800px){ .feature-body{grid-template-columns:1fr 1fr} }
@@ -309,14 +330,19 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
       <h2>Selected work</h2>
       <p>Each project states its context, my specific contribution, and what came out of it.</p>
     </div>
+    <p class="hint">Click a project to expand it.</p>
 
-    <article class="feature" style="margin-bottom:1.15rem">
-      <div class="feature-head">
-        <span class="label">Featured project</span>
-        <h3 style="font-size:clamp(1.3rem,2.6vw,1.7rem); margin-bottom:.5rem">What actually determines an NBA player's salary?</h3>
-        <p class="meta" style="margin-bottom:.9rem">Excel &middot; Regression, inference, probability modeling &middot; Summer 2026</p>
-        <p class="muted" style="font-size:.97rem">A five-stage statistical analysis of 513 NBA players from the 2020&ndash;21 season, built as a team project across five graduate assignments — from cleaning the raw export through to a validated multiple regression model.</p>
-      </div>
+    <details class="proj" open>
+      <summary>
+        <div class="proj-sum">
+          <span class="label">Featured project</span>
+          <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">What actually determines an NBA player's salary?</h3>
+          <p class="meta">Excel &middot; Regression, inference, probability modeling &middot; Summer 2026</p>
+          <p class="teaser">A five-stage statistical analysis of 513 NBA players from the 2020&ndash;21 season, built as a team project across five graduate assignments — from cleaning the raw export through to a validated multiple regression model.</p>
+        </div>
+        <span class="chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="proj-body">
 
       <div class="stat-row">
         <div class="stat"><span class="n">513</span><span class="k">players analyzed</span></div>
@@ -348,38 +374,47 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
         <span class="label">The decision I'd want to be asked about in an interview</span>
         <p style="font-size:.97rem">Effective field goal percentage was a <em>statistically significant</em> predictor, and I removed it anyway. Its coefficient was strongly negative — the model was claiming that better shooters earn less, which is nonsense. The cause was sample size: players with almost no minutes attempt almost no shots, so a handful of makes produces an inflated percentage. Keeping a significant-but-senseless predictor would have made the model look stronger on paper and worse in practice. The final model kept only the two variables that were <strong>both statistically and practically defensible</strong>, and R&sup2; held near 0.50 the entire way down.</p>
       </div>
-    </article>
 
-    <div class="grid two">
-      <article class="card">
-        <span class="label">Finding</span>
-        <h3>Normal assumptions overstated the tail by two-thirds</h3>
-        <p class="meta" style="margin-top:.7rem">Probability modeling</p>
-        <p class="muted" style="font-size:.95rem">Of eight continuous variables, only age was near-symmetric enough to justify a normal approximation. Asked how often a player earns more than $10 million, the normal model returned <strong>37.1%</strong> against an empirical <strong>22.2%</strong>. A front office sizing a free-agent budget off the normal figure would have planned for eight-figure competition on roughly two-thirds more targets than actually existed — and over-reserved cap space accordingly.</p>
-      </article>
+      <div class="feature-body">
+        <div class="feature-cell">
+          <span class="label">Finding &mdash; probability modeling</span>
+          <p>Of eight continuous variables, only age was near-symmetric enough to justify a normal approximation. Asked how often a player earns more than $10 million, the normal model returned <strong>37.1%</strong> against an empirical <strong>22.2%</strong>. A front office sizing a free-agent budget off the normal figure would have planned for eight-figure competition on roughly two-thirds more targets than actually existed — and over-reserved cap space accordingly.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Finding &mdash; inference</span>
+          <p>Mean salary of <strong>$7,027,351</strong> tested against a claimed $6M: rejected at &alpha; = 0.05 (t = 2.571, df = 512, one-tailed p = 0.005). But the scouting benchmark of 500 points survived (t = &minus;1.613, p = 0.107) — the shortfall sat inside ordinary sampling variation. The 95% interval on mean salary, scaled to a 15-man roster, spans <strong>$93.6M to $117.2M</strong>: a $23.5M planning band.</p>
+        </div>
+      </div>
 
-      <article class="card">
-        <span class="label">Finding</span>
-        <h3>Two tests, opposite directions</h3>
-        <p class="meta" style="margin-top:.7rem">Hypothesis testing &amp; confidence intervals</p>
-        <p class="muted" style="font-size:.95rem">Mean salary of <strong>$7,027,351</strong> tested against a claimed $6M: rejected at &alpha; = 0.05 (t = 2.571, df = 512, one-tailed p = 0.005). But the scouting benchmark of 500 points survived (t = &minus;1.613, p = 0.107) — the shortfall sat inside ordinary sampling variation. The 95% interval on mean salary, scaled to a 15-man roster, spans <strong>$93.6M to $117.2M</strong>: a $23.5M planning band.</p>
-      </article>
-    </div>
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <span class="label">Documentation</span>
+        <p>The full analysis — every workbook, plus a dated decision log recording the analytical choices behind each stage — is maintained in a version-controlled repository, in the same way an analytics team would document work for review.</p>
+      </div>
 
-    <div class="grid two" style="margin-top:1.15rem">
-      <article class="card">
-        <span class="label">In progress</span>
-        <h3>Coming this year</h3>
-        <p class="meta" style="margin-top:.7rem">Wake Forest MSBA &middot; 2026&ndash;2027</p>
-        <p class="muted" style="font-size:.95rem">This portfolio is maintained across the full MSBA program. Projects from the fall and spring coursework will be added here as they're completed, with the same structure: context, contribution, outcome.</p>
-      </article>
-      <article class="card">
-        <span class="label">Repository</span>
-        <h3>Project documentation</h3>
-        <p class="meta" style="margin-top:.7rem">Version-controlled analysis</p>
-        <p class="muted" style="font-size:.95rem">The full analysis — every workbook, plus a dated decision log recording the analytical choices behind each stage — is maintained in a version-controlled repository, in the same way an analytics team would document work for review.</p>
-      </article>
-    </div>
+      </div><!-- /proj-body -->
+    </details>
+
+    <!-- ===================================================================
+         TO ADD A PROJECT LATER: copy this whole <details> block, paste it
+         above this comment, and fill in the text. Leave off the `open`
+         attribute so it starts collapsed. Nothing else needs changing.
+    ==================================================================== -->
+    <details class="proj">
+      <summary>
+        <div class="proj-sum">
+          <span class="label">In progress</span>
+          <h3>More projects coming this year</h3>
+          <p class="meta">Wake Forest MSBA &middot; 2026&ndash;2027</p>
+          <p class="teaser">This portfolio is maintained across the full MSBA program.</p>
+        </div>
+        <span class="chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="proj-body">
+        <div class="feature-cell">
+          <p>Projects from the fall and spring coursework will be added here as they're completed, each with the same structure: context, my specific contribution, and measurable outcome. Coursework with Dr. Nenova and Dr. Kim is expected to produce portfolio-ready analytics work this year.</p>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
