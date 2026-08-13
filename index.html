@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Junjie (Ben) Xu — Business Analytics Portfolio</title>
+<meta name="description" content="Market-facing portfolio of Junjie (Ben) Xu, M.S. Business Analytics candidate at Wake Forest University. Targeting analytics roles in healthcare, pharmaceuticals, and financial services.">
+<meta name="author" content="Junjie (Ben) Xu">
+<meta property="og:title" content="Junjie (Ben) Xu — Business Analytics Portfolio">
+<meta property="og:description" content="M.S. Business Analytics candidate at Wake Forest University. Healthcare, pharma, and financial services analytics.">
+<meta property="og:type" content="website">
+
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --paper:#faf9f7;
+  --surface:#ffffff;
+  --ink:#1a1a18;
+  --ink-soft:#57534a;
+  --ink-faint:#8a857a;
+  --rule:#e3e0d8;
+  --gold:#9e7e38;
+  --gold-soft:#f5efe1;
+  --shadow:0 1px 2px rgba(26,26,24,.04), 0 8px 24px rgba(26,26,24,.06);
+
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+
+  --wrap:1080px;
+  --gutter:clamp(20px,5vw,48px);
+}
+
+/* ---------- reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:76px; -webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:clamp(16px,1.02rem,17px);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-wrap:break-word;
+}
+/* flex & grid children default to min-width:auto and refuse to shrink below their
+   content, which is what pushes a phone viewport into horizontal scroll */
+.hero-grid>*, .grid>*, .entry>*, .nav-inner>*, .footer-inner>*, .stat-row>*{min-width:0}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--serif); font-weight:600; line-height:1.15; letter-spacing:-.01em; margin:0}
+h1{font-size:clamp(2.3rem,6vw,3.7rem)}
+h2{font-size:clamp(1.6rem,3.6vw,2.2rem)}
+h3{font-size:clamp(1.12rem,2vw,1.3rem)}
+p{margin:0 0 1.1em}
+p:last-child{margin-bottom:0}
+
+.eyebrow{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold); margin:0 0 .9rem; display:block;
+}
+.lede{font-size:clamp(1.06rem,1.9vw,1.24rem); color:var(--ink-soft); line-height:1.6}
+.muted{color:var(--ink-soft)}
+
+/* ---------- layout ---------- */
+.wrap{width:100%; max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gutter)}
+section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--rule)}
+.section-head{margin-bottom:clamp(28px,4vw,44px); max-width:64ch}
+.section-head p{margin-top:.85rem}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(250,249,247,.9);
+  backdrop-filter:saturate(180%) blur(12px);
+  -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-inner{display:flex; align-items:center; gap:1.25rem; min-height:60px;
+  width:100%; max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gutter)}
+.nav-name{font-family:var(--serif); font-weight:600; font-size:1.02rem; text-decoration:none; white-space:nowrap; flex:none}
+.nav-links{
+  display:flex; gap:1.15rem; margin-left:auto; padding-block:6px; min-width:0;
+  overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;
+  mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent);
+}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-size:.83rem; color:var(--ink-soft); text-decoration:none; white-space:nowrap;
+  padding-bottom:2px; border-bottom:1.5px solid transparent; transition:color .15s,border-color .15s}
+.nav-links a:hover{color:var(--gold); border-bottom-color:var(--gold)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(52px,9vw,96px) clamp(46px,7vw,76px); border-top:0}
+.hero-grid{display:grid; grid-template-columns:1fr; gap:clamp(28px,4vw,52px); align-items:center}
+@media(min-width:820px){ .hero-grid{grid-template-columns:1.6fr .8fr} }
+.hero h1{margin-bottom:.45rem}
+.hero .role{font-family:var(--sans); font-size:clamp(1rem,1.8vw,1.14rem); color:var(--gold); font-weight:600; margin-bottom:1.1rem}
+.hero .lede{max-width:58ch}
+
+.portrait{
+  width:100%; aspect-ratio:4/5; border-radius:4px;
+  background:var(--gold-soft); border:1px solid var(--rule);
+  display:grid; place-items:center; text-align:center;
+  color:var(--ink-faint); font-family:var(--mono); font-size:.74rem;
+  padding:1rem; box-shadow:var(--shadow); overflow:hidden;
+}
+.portrait img{width:100%; height:100%; object-fit:cover}
+
+.actions{display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.7rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; padding:.62rem 1.15rem; border-radius:3px;
+  font-size:.9rem; font-weight:600; text-decoration:none;
+  border:1px solid var(--ink); background:var(--ink); color:var(--paper);
+  transition:opacity .15s,background .15s,color .15s,border-color .15s}
+.btn:hover{opacity:.86}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--gold); color:var(--gold); opacity:1}
+
+/* ---------- placeholder ---------- */
+.placeholder{border:2px dashed var(--gold); background:var(--gold-soft); border-radius:4px;
+  padding:clamp(26px,5vw,52px) 1.25rem; text-align:center; color:var(--ink-soft)}
+.placeholder .tag{font-family:var(--mono); font-size:.7rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.7rem}
+.placeholder strong{font-family:var(--serif); font-size:1.3rem; display:block; margin-bottom:.45rem; color:var(--ink)}
+.placeholder .note{font-size:.87rem; max-width:50ch; margin-inline:auto}
+.video-slot{aspect-ratio:16/9; display:grid; place-items:center; width:100%}
+.video-slot iframe{width:100%; height:100%; border:0; border-radius:4px; display:block}
+
+.inline-todo{background:var(--gold-soft); border:1px dashed var(--gold); border-radius:3px;
+  padding:.15rem .45rem; font-family:var(--mono); font-size:.8rem; color:var(--gold)}
+
+/* ---------- cards ---------- */
+.grid{display:grid; gap:1.15rem}
+.grid.two{grid-template-columns:1fr}
+@media(min-width:760px){ .grid.two{grid-template-columns:1fr 1fr} }
+.grid.three{grid-template-columns:1fr}
+@media(min-width:640px){ .grid.three{grid-template-columns:1fr 1fr} }
+@media(min-width:980px){ .grid.three{grid-template-columns:repeat(3,1fr)} }
+
+.card{background:var(--surface); border:1px solid var(--rule); border-radius:4px;
+  padding:clamp(20px,3vw,30px); box-shadow:var(--shadow)}
+.card h3{margin-bottom:.5rem}
+.card .meta{font-family:var(--mono); font-size:.72rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-faint); margin-bottom:.9rem}
+.label{font-family:var(--mono); font-size:.68rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.35rem}
+
+/* featured project */
+.feature{background:var(--surface); border:1px solid var(--rule); border-radius:4px;
+  box-shadow:var(--shadow); overflow:hidden}
+.feature-head{padding:clamp(22px,3.4vw,34px); border-bottom:1px solid var(--rule)}
+.feature-body{display:grid; grid-template-columns:1fr; gap:0}
+@media(min-width:800px){ .feature-body{grid-template-columns:1fr 1fr} }
+.feature-cell{padding:clamp(20px,3vw,30px); border-top:1px solid var(--rule)}
+@media(min-width:800px){
+  .feature-cell:nth-child(odd){border-right:1px solid var(--rule)}
+}
+.feature-cell p{font-size:.95rem; color:var(--ink-soft); margin-bottom:0}
+
+/* stat row */
+.stat-row{display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--rule); border-top:1px solid var(--rule)}
+@media(min-width:760px){ .stat-row{grid-template-columns:repeat(4,1fr)} }
+.stat{background:var(--surface); padding:clamp(16px,2.6vw,24px); text-align:center}
+.stat .n{font-family:var(--serif); font-size:clamp(1.4rem,3.2vw,2rem); font-weight:600; display:block; line-height:1.1}
+.stat .k{font-family:var(--mono); font-size:.66rem; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-faint); display:block; margin-top:.5rem}
+
+/* timeline */
+.entry{display:grid; grid-template-columns:1fr; gap:.25rem 2rem; padding-block:1.35rem; border-top:1px solid var(--rule)}
+.entry:first-of-type{border-top:0; padding-top:0}
+@media(min-width:760px){ .entry{grid-template-columns:200px 1fr} }
+.entry .when{font-family:var(--mono); font-size:.75rem; letter-spacing:.05em; color:var(--ink-faint); padding-top:.35rem}
+.entry h3{margin-bottom:.15rem}
+.entry .where{color:var(--gold); font-weight:600; font-size:.93rem; margin-bottom:.55rem}
+.entry ul{margin:0; padding-left:1.1rem}
+.entry li{font-size:.95rem; color:var(--ink-soft); margin-bottom:.3rem}
+.entry p{font-size:.95rem; color:var(--ink-soft)}
+
+/* skills */
+.skill-group{margin-bottom:1.4rem}
+.skill-group:last-child{margin-bottom:0}
+.skill-group h4{font-family:var(--mono); font-size:.71rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:.65rem; font-weight:500}
+.pills{display:flex; flex-wrap:wrap; gap:.45rem}
+.pill{font-size:.85rem; padding:.34rem .8rem; border-radius:100px;
+  background:var(--surface); border:1px solid var(--rule); color:var(--ink-soft)}
+
+/* resume */
+.resume-frame{width:100%; aspect-ratio:8.5/11; max-height:1000px; border:1px solid var(--rule);
+  border-radius:4px; background:var(--surface); box-shadow:var(--shadow); overflow:hidden}
+.resume-frame iframe,.resume-frame embed{width:100%; height:100%; border:0; display:block}
+
+/* contact */
+.contact-list{list-style:none; margin:0; padding:0; display:grid; gap:0}
+.contact-list li{border-top:1px solid var(--rule)}
+.contact-list li:first-child{border-top:0}
+.contact-list a,.contact-list span.row{display:flex; justify-content:space-between; align-items:baseline;
+  gap:1rem; padding:.95rem 0; text-decoration:none; color:var(--ink); transition:color .15s}
+.contact-list a:hover{color:var(--gold)}
+.contact-list .k{font-family:var(--mono); font-size:.71rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-faint); flex:none}
+.contact-list .v{text-align:right}
+
+footer{border-top:1px solid var(--rule); padding-block:2.4rem; color:var(--ink-faint); font-size:.83rem}
+.footer-inner{display:flex; flex-wrap:wrap; gap:.6rem 1.5rem; justify-content:space-between}
+
+/* a11y */
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:2px}
+.skip{position:absolute; left:-9999px}
+.skip:focus{left:var(--gutter); top:.6rem; z-index:100; background:var(--ink); color:var(--paper); padding:.6rem 1rem; border-radius:3px}
+@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Junjie (Ben) Xu</a>
+    <div class="nav-links">
+      <a href="#intro">Introduction</a>
+      <a href="#about">About</a>
+      <a href="#work">Selected Work</a>
+      <a href="#market">Market Perspective</a>
+      <a href="#background">Background</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Exploring Track &middot; M.S. Business Analytics</span>
+      <h1>Junjie (Ben) Xu</h1>
+      <p class="role">Business analytics candidate targeting healthcare &amp; pharmaceutical analytics, and financial services</p>
+      <p class="lede">I came to analytics from health science, by way of commercial roles at Johnson &amp; Johnson and SPX FLOW. My interest is the point where a model meets a decision — where the number stops being a statistic and starts being a budget, a forecast, or a patient outcome.</p>
+      <div class="actions">
+        <a class="btn" href="#work">View selected work</a>
+        <a class="btn ghost" href="#resume">Resume</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <span>PHOTO_PLACEHOLDER<br>professional headshot<br>(4:5 portrait)</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ VIDEO ============ -->
+<section id="intro">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">01 — Introduction</span>
+      <h2>A quick introduction</h2>
+      <p class="lede">Ninety seconds on who I am, what I work on, and where I'm headed.</p>
+    </div>
+    <div class="placeholder video-slot">
+      <div>
+        <span class="tag">Placeholder</span>
+        <strong>Video goes here</strong>
+        <p class="note">Send the link once it's recorded and uploaded (YouTube unlisted or Vimeo) and the embed drops straight into this slot — it's already sized 16:9.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">02 — About</span>
+      <h2>Where I'm headed</h2>
+    </div>
+    <div class="grid two">
+      <div>
+        <p class="lede">I'm pursuing my M.S. in Business Analytics at Wake Forest, and I'm targeting analytics roles in <strong>healthcare and pharmaceuticals</strong> — with a secondary interest in <strong>financial services</strong>, where the modeling problems are structurally similar.</p>
+        <p>That focus isn't arbitrary. My undergraduate degree is in Health and Exercise Science, also at Wake Forest, so I read clinical and physiological data as a native language rather than as an unfamiliar domain. Both of my internships were commercial roles inside health organizations: marketing at Johnson &amp; Johnson and commercial strategy at SPX FLOW's health and nutrition business, both in Shanghai.</p>
+        <p>What those roles taught me is that the constraint in a commercial healthcare team is rarely the analysis. It's the translation. I spent two summers turning technical capability into something a client would act on, and I'm now building the quantitative half so I can do both ends of that conversation myself.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Targeted goals</span>
+        <h3>What I'm looking for</h3>
+        <p class="meta" style="margin-top:.9rem">Role &middot; Industry &middot; Timing</p>
+        <p style="margin-bottom:1rem"><strong>Roles:</strong> Business analyst, commercial analytics, market access or pricing analytics, healthcare data analyst. In financial services: risk or portfolio analytics.</p>
+        <p style="margin-bottom:1rem"><strong>Industries:</strong> Pharmaceuticals and medical devices first; healthcare providers and payers second; banking and financial services as an adjacent fit.</p>
+        <p style="margin-bottom:1rem"><strong>Timing:</strong> Summer 2027 internship; full-time from May 2027.</p>
+        <p><strong>Also brings:</strong> Fluent English and Mandarin, intermediate German, and two summers of working across the U.S.–China commercial divide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELECTED WORK ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">03 — Selected Work</span>
+      <h2>Selected work</h2>
+      <p>Each project states its context, my specific contribution, and what came out of it.</p>
+    </div>
+
+    <article class="feature" style="margin-bottom:1.15rem">
+      <div class="feature-head">
+        <span class="label">Featured project</span>
+        <h3 style="font-size:clamp(1.3rem,2.6vw,1.7rem); margin-bottom:.5rem">What actually determines an NBA player's salary?</h3>
+        <p class="meta" style="margin-bottom:.9rem">Excel &middot; Regression, inference, probability modeling &middot; Summer 2026</p>
+        <p class="muted" style="font-size:.97rem">A five-stage statistical analysis of 513 NBA players from the 2020&ndash;21 season, built as a team project across five graduate assignments — from cleaning the raw export through to a validated multiple regression model.</p>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><span class="n">513</span><span class="k">players analyzed</span></div>
+        <div class="stat"><span class="n">50.2%</span><span class="k">variance explained (R&sup2;)</span></div>
+        <div class="stat"><span class="n">9</span><span class="k">models tested</span></div>
+        <div class="stat"><span class="n">$23.5M</span><span class="k">roster planning spread</span></div>
+      </div>
+
+      <div class="feature-body">
+        <div class="feature-cell">
+          <span class="label">Context</span>
+          <p>Salary is the single largest constraint a front office manages, and the league's pay structure is famously top-heavy. We asked a plain question — which performance measures actually move a player's salary — and treated it the way a commercial team would treat a pricing problem.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">My role</span>
+          <p><span class="inline-todo">REPLACE ME</span> — this was a team deliverable, and the rubric wants your specific contribution named. Tell me which pieces were yours (the cleaning and feature engineering? the probability scenarios? the regression and backward elimination? the written commentary?) and I'll write this properly.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Approach</span>
+          <p>Cleaned the raw export down to twelve core box-score fields and engineered two advanced measures — effective field goal percentage and assist-to-turnover ratio. Tested distributional assumptions, ran one-sample t-tests and confidence intervals, then built a multiple regression and reduced it by backward elimination across nine successive models.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Outcome</span>
+          <p>A two-variable model — age and total points — explaining <strong>50.2%</strong> of salary variance across all 513 players (F = 257.6). Each additional year of age predicted <strong>+$633,654</strong>; each additional point scored predicted <strong>+$13,308</strong>.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <span class="label">The decision I'd want to be asked about in an interview</span>
+        <p style="font-size:.97rem">Effective field goal percentage was a <em>statistically significant</em> predictor, and I removed it anyway. Its coefficient was strongly negative — the model was claiming that better shooters earn less, which is nonsense. The cause was sample size: players with almost no minutes attempt almost no shots, so a handful of makes produces an inflated percentage. Keeping a significant-but-senseless predictor would have made the model look stronger on paper and worse in practice. The final model kept only the two variables that were <strong>both statistically and practically defensible</strong>, and R&sup2; held near 0.50 the entire way down.</p>
+      </div>
+    </article>
+
+    <div class="grid two">
+      <article class="card">
+        <span class="label">Finding</span>
+        <h3>Normal assumptions overstated the tail by two-thirds</h3>
+        <p class="meta" style="margin-top:.7rem">Probability modeling</p>
+        <p class="muted" style="font-size:.95rem">Of eight continuous variables, only age was near-symmetric enough to justify a normal approximation. Asked how often a player earns more than $10 million, the normal model returned <strong>37.1%</strong> against an empirical <strong>22.2%</strong>. A front office sizing a free-agent budget off the normal figure would have planned for eight-figure competition on roughly two-thirds more targets than actually existed — and over-reserved cap space accordingly.</p>
+      </article>
+
+      <article class="card">
+        <span class="label">Finding</span>
+        <h3>Two tests, opposite directions</h3>
+        <p class="meta" style="margin-top:.7rem">Hypothesis testing &amp; confidence intervals</p>
+        <p class="muted" style="font-size:.95rem">Mean salary of <strong>$7,027,351</strong> tested against a claimed $6M: rejected at &alpha; = 0.05 (t = 2.571, df = 512, one-tailed p = 0.005). But the scouting benchmark of 500 points survived (t = &minus;1.613, p = 0.107) — the shortfall sat inside ordinary sampling variation. The 95% interval on mean salary, scaled to a 15-man roster, spans <strong>$93.6M to $117.2M</strong>: a $23.5M planning band.</p>
+      </article>
+    </div>
+
+    <div class="grid two" style="margin-top:1.15rem">
+      <article class="card">
+        <span class="label">In progress</span>
+        <h3>Coming this year</h3>
+        <p class="meta" style="margin-top:.7rem">Wake Forest MSBA &middot; 2026&ndash;2027</p>
+        <p class="muted" style="font-size:.95rem">This portfolio is maintained across the full MSBA program. Projects from the fall and spring coursework will be added here as they're completed, with the same structure: context, contribution, outcome.</p>
+      </article>
+      <article class="card">
+        <span class="label">Repository</span>
+        <h3>Project documentation</h3>
+        <p class="meta" style="margin-top:.7rem">Version-controlled analysis</p>
+        <p class="muted" style="font-size:.95rem">The full analysis — every workbook, plus a dated decision log recording the analytical choices behind each stage — is maintained in a version-controlled repository, in the same way an analytics team would document work for review.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMERCIAL AWARENESS ============ -->
+<section id="market">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">04 — Market Perspective</span>
+      <h2>How I read the market</h2>
+      <p>Three things I pay attention to in healthcare, pharma, and financial services — and why the NBA project above is more relevant to them than it first appears.</p>
+    </div>
+    <div class="grid three">
+      <article class="card">
+        <span class="label">Trend</span>
+        <h3>Commercial teams are being asked to quantify what they used to argue</h3>
+        <p class="meta" style="margin-top:.7rem">What's changing</p>
+        <p class="muted" style="font-size:.95rem">In both of my internships, positioning decisions were made from experience and customer conversation. That is steadily being replaced by demands for evidence — market access and payer negotiations in particular now turn on defensible quantitative cases. The people who can hold both halves of that conversation are the ones commercial teams are short of.</p>
+      </article>
+      <article class="card">
+        <span class="label">Challenge</span>
+        <h3>Skewed distributions break the models built on top of them</h3>
+        <p class="meta" style="margin-top:.7rem">What's hard about it</p>
+        <p class="muted" style="font-size:.95rem">Healthcare cost data, drug revenue, and financial returns share a shape: heavily right-skewed, with the decisions that matter living in the tail. My own analysis produced a clean demonstration — a normal approximation overstated a tail probability by two-thirds. The same error in a cost forecast or a risk model is not an academic problem; it is a mispriced reserve.</p>
+      </article>
+      <article class="card">
+        <span class="label">Where I fit</span>
+        <h3>The judgment call is the differentiator, not the model</h3>
+        <p class="meta" style="margin-top:.7rem">My angle</p>
+        <p class="muted" style="font-size:.95rem">Software will fit a regression. What it will not do is notice that a significant coefficient implies something absurd about the world and remove it anyway. Domain knowledge is what turns a fitted model into a trustworthy one — and a health science degree plus two summers inside pharma commercial teams is precisely the domain knowledge these industries are hiring for.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BACKGROUND ============ -->
+<section id="background">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">05 — Background</span>
+      <h2>Education &amp; experience</h2>
+    </div>
+
+    <h3 style="font-size:clamp(1.15rem,2.2vw,1.35rem); margin-bottom:1.2rem">Education</h3>
+    <div style="margin-bottom:clamp(38px,5vw,58px)">
+      <div class="entry">
+        <div class="when">Expected May 2027</div>
+        <div>
+          <h3>M.S. in Business Analytics</h3>
+          <div class="where">Wake Forest University &middot; School of Business</div>
+          <p>Relevant coursework: Python, Statistics.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">August 2025</div>
+        <div>
+          <h3>B.S. in Health and Exercise Science</h3>
+          <div class="where">Wake Forest University</div>
+          <p>Relevant coursework: Calculus I&ndash;III, Statistics in Health Science, Economics, Public Health, Health Psychology.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:clamp(1.15rem,2.2vw,1.35rem); margin-bottom:1.2rem">Professional experience</h3>
+    <div style="margin-bottom:clamp(38px,5vw,58px)">
+      <div class="entry">
+        <div class="when">May &ndash; August 2024</div>
+        <div>
+          <h3>Commercial Summer Intern</h3>
+          <div class="where">SPX FLOW &middot; Shanghai, China</div>
+          <ul>
+            <li>Delivered client presentations on health and nutrition solutions, translating technical capabilities into commercial value.</li>
+            <li>Partnered with commercial and technical teams to identify customer needs and align account messaging.</li>
+            <li>Analyzed health and nutrition trends to support account planning and cross-functional business development.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">May &ndash; August 2023</div>
+        <div>
+          <h3>Marketing Summer Intern</h3>
+          <div class="where">Johnson &amp; Johnson &middot; Shanghai, China</div>
+          <ul>
+            <li>Produced 39 product and event posts generating 10,000+ views among healthcare professionals and customers.</li>
+            <li>Applied colleague and client feedback across 3 healthcare products to refine product positioning.</li>
+            <li>Coordinated a product launch and team-engagement events for 150+ participants.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">January 2023 &ndash; 2025</div>
+        <div>
+          <h3>Team Member</h3>
+          <div class="where">Wake Forest University E-Sports</div>
+          <p>Collaborated on strategy and in-game communication in competitive team play.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:clamp(1.15rem,2.2vw,1.35rem); margin-bottom:1.2rem">Tools &amp; methods</h3>
+    <div class="skill-group">
+      <h4>Analytics &amp; tools</h4>
+      <div class="pills"><span class="pill">Python</span><span class="pill">Excel (advanced)</span><span class="pill">Statistical analysis</span><span class="pill">PowerPoint</span><span class="pill">Google Workspace</span></div>
+    </div>
+    <div class="skill-group">
+      <h4>Methods</h4>
+      <div class="pills"><span class="pill">Descriptive statistics</span><span class="pill">Probability modeling</span><span class="pill">Hypothesis testing</span><span class="pill">Confidence intervals</span><span class="pill">Multiple regression</span><span class="pill">Backward elimination</span></div>
+    </div>
+    <div class="skill-group">
+      <h4>Commercial</h4>
+      <div class="pills"><span class="pill">Market research</span><span class="pill">Industry research</span><span class="pill">Product marketing</span><span class="pill">Client engagement</span><span class="pill">Cross-functional collaboration</span></div>
+    </div>
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <div class="pills"><span class="pill">English — fluent</span><span class="pill">Mandarin Chinese — fluent</span><span class="pill">German — intermediate</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESUME ============ -->
+<section id="resume">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">06 — Resume</span>
+      <h2>Resume</h2>
+      <p>Readable on screen below, and downloadable as a PDF.</p>
+    </div>
+    <div class="actions" style="margin-top:0; margin-bottom:1.5rem">
+      <a class="btn" href="resume.pdf" download="Junjie-Ben-Xu-Resume.pdf">Download PDF</a>
+      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
+    </div>
+    <div class="placeholder">
+      <span class="tag">Placeholder</span>
+      <strong>Resume PDF goes here</strong>
+      <p class="note">Drop the PDF into this folder named <code>resume.pdf</code> and this box becomes an inline viewer. The two buttons above are already wired to that filename.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">07 — Contact</span>
+      <h2>Get in touch</h2>
+      <p class="lede">Open to conversations about analytics roles in healthcare, pharmaceuticals, and financial services — and to Summer 2027 internships.</p>
+    </div>
+    <ul class="contact-list">
+      <li><a href="mailto:xuj21@wfu.edu"><span class="k">Email</span><span class="v">xuj21@wfu.edu</span></a></li>
+      <li><a href="https://www.linkedin.com/in/jjbenxu" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/jjbenxu</span></a></li>
+      <li><a href="https://github.com/jjbenxu" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">github.com/jjbenxu</span></a></li>
+      <li><span class="row"><span class="k">Location</span><span class="v">Winston-Salem, North Carolina</span></span></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>&copy; 2026 Junjie (Ben) Xu</span>
+    <span>M.S. Business Analytics &middot; Wake Forest University</span>
+  </div>
+</footer>
+
+</body>
+</html>
