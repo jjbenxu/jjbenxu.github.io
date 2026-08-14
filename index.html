@@ -129,6 +129,12 @@ section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--rule)}
 .video-slot{aspect-ratio:16/9; display:grid; place-items:center; width:100%}
 .video-slot iframe{width:100%; height:100%; border:0; border-radius:4px; display:block}
 
+/* intro video — native aspect 812x540, capped so it never upscales past 1x */
+.video-wrap{width:100%; max-width:860px; aspect-ratio:812/540; background:#000;
+  border:1px solid var(--rule); border-radius:4px; overflow:hidden; box-shadow:var(--shadow)}
+.video-wrap video{width:100%; height:100%; display:block; object-fit:contain; background:#000}
+.video-note{font-size:.85rem; color:var(--ink-faint); margin-top:.8rem}
+
 .inline-todo{background:var(--gold-soft); border:1px dashed var(--gold); border-radius:3px;
   padding:.15rem .45rem; font-family:var(--mono); font-size:.8rem; color:var(--gold)}
 
@@ -286,13 +292,14 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
       <h2>A quick introduction</h2>
       <p class="lede">Ninety seconds on who I am, what I work on, and where I'm headed.</p>
     </div>
-    <div class="placeholder video-slot">
-      <div>
-        <span class="tag">Placeholder</span>
-        <strong>Video goes here</strong>
-        <p class="note">Send the link once it's recorded and uploaded (YouTube unlisted or Vimeo) and the embed drops straight into this slot — it's already sized 16:9.</p>
-      </div>
+    <div class="video-wrap">
+      <video controls preload="none" poster="intro-poster.jpg" playsinline>
+        <source src="intro.mp4" type="video/mp4">
+        Your browser can't play embedded video.
+        <a href="intro.mp4">Download the introduction (MP4)</a>.
+      </video>
     </div>
+    <p class="video-note">84 seconds. <a href="intro.mp4" download style="color:var(--gold)">Download the video</a> if it doesn't play in your browser.</p>
   </div>
 </section>
 
