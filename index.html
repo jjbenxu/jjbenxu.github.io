@@ -102,7 +102,7 @@ section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--rule)}
 .hero .lede{max-width:58ch}
 
 .portrait{
-  width:100%; aspect-ratio:4/5; border-radius:4px;
+  width:100%; aspect-ratio:1/1; border-radius:4px;   /* square — matches the source headshot, no cropping */
   background:var(--gold-soft); border:1px solid var(--rule);
   display:grid; place-items:center; text-align:center;
   color:var(--ink-faint); font-family:var(--mono); font-size:.74rem;
@@ -286,7 +286,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
       </div>
     </div>
     <div class="portrait">
-      <span>PHOTO_PLACEHOLDER<br>professional headshot<br>(4:5 portrait)</span>
+      <img src="headshot.jpg" alt="Junjie (Ben) Xu" width="1000" height="1000">
     </div>
   </div>
 </header>
@@ -372,7 +372,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
         </div>
         <div class="feature-cell">
           <span class="label">My role</span>
-          <p><span class="inline-todo">REPLACE ME</span> — this was a team deliverable, and the rubric wants your specific contribution named. Tell me which pieces were yours (the cleaning and feature engineering? the probability scenarios? the regression and backward elimination? the written commentary?) and I'll write this properly.</p>
+          <p>I carried the analysis end to end — cleaning and consolidating the raw export, engineering the two advanced measures, testing the distributional assumptions, running the hypothesis tests and confidence intervals, and building the regression through backward elimination. I also wrote the commentary documenting the reasoning at each stage. This was a team assignment and the interpretation was worked through together; my teammates pushed back on conclusions and that scrutiny made the final model better, particularly the decision to drop effective field goal percentage.</p>
         </div>
         <div class="feature-cell">
           <span class="label">Approach</span>
