@@ -220,6 +220,13 @@ section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--rule)}
 .resume-frame{width:100%; aspect-ratio:8.5/11; max-height:1000px; border:1px solid var(--rule);
   border-radius:4px; background:var(--surface); box-shadow:var(--shadow); overflow:hidden}
 .resume-frame iframe,.resume-frame embed{width:100%; height:100%; border:0; display:block}
+/* iOS Safari won't render a PDF inside an iframe, so below tablet width we swap
+   the embed for an explicit open/download card rather than showing a blank box */
+.resume-mobile{display:none}
+@media(max-width:759px){
+  .resume-frame{display:none}
+  .resume-mobile{display:block}
+}
 
 /* contact */
 .contact-list{list-style:none; margin:0; padding:0; display:grid; gap:0}
@@ -552,10 +559,17 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
       <a class="btn" href="resume.pdf" download="Junjie-Ben-Xu-Resume.pdf">Download PDF</a>
       <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
     </div>
-    <div class="placeholder">
-      <span class="tag">Placeholder</span>
-      <strong>Resume PDF goes here</strong>
-      <p class="note">Drop the PDF into this folder named <code>resume.pdf</code> and this box becomes an inline viewer. The two buttons above are already wired to that filename.</p>
+    <div class="resume-frame">
+      <iframe src="resume.pdf#view=FitH&toolbar=0" title="Resume of Junjie (Ben) Xu" loading="lazy"></iframe>
+    </div>
+    <div class="resume-mobile card">
+      <span class="label">One page &middot; PDF</span>
+      <h3 style="margin-top:.3rem">Resume</h3>
+      <p class="muted" style="font-size:.95rem; margin-top:.6rem">Phones can't preview PDFs inline, so open it full screen instead.</p>
+      <div class="actions" style="margin-top:1.1rem">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Open resume</a>
+        <a class="btn ghost" href="resume.pdf" download="Junjie-Ben-Xu-Resume.pdf">Download</a>
+      </div>
     </div>
   </div>
 </section>
@@ -566,7 +580,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
     <div class="section-head">
       <span class="eyebrow">07 — Contact</span>
       <h2>Get in touch</h2>
-      <p class="lede">Open to conversations about analytics roles in healthcare, pharmaceuticals, and financial services — and to Summer 2027 internships.</p>
+      <p class="lede">Open to conversations about analytics roles in healthcare, pharmaceuticals, and financial services.</p>
     </div>
     <ul class="contact-list">
       <li><a href="mailto:xuj21@wfu.edu"><span class="k">Email</span><span class="v">xuj21@wfu.edu</span></a></li>
