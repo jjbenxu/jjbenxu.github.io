@@ -329,10 +329,61 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
     <details class="proj" open>
       <summary>
         <div class="proj-sum">
-          <span class="label">Featured project</span>
+          <span class="label">Ongoing project</span>
+          <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">Stopping sign-up bonus fraud without slowing down good customers</h3>
+          <p class="meta">Python &middot; Logistic regression, feature engineering, cost-based review threshold &middot; Fall 2026 &middot; In progress</p>
+          <p class="teaser">A fraud-scoring model for a hypothetical retail bank whose $200 new-account bonus attracted organized fraud, built on a simulated dataset of 247,111 applications. The results below cover the first model; the project is still in progress.</p>
+        </div>
+        <span class="chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="proj-body">
+
+      <div class="stat-row">
+        <div class="stat"><span class="n">247K</span><span class="k">applications analyzed</span></div>
+        <div class="stat"><span class="n">0.88</span><span class="k">AUC, vs. 0.61 for the existing score</span></div>
+        <div class="stat"><span class="n">64%</span><span class="k">of confirmed fraud caught</span></div>
+        <div class="stat"><span class="n">46%</span><span class="k">lower monthly fraud + review cost</span></div>
+      </div>
+
+      <div class="feature-body">
+        <div class="feature-cell">
+          <span class="label">Context</span>
+          <p>A retail bank began paying a $200 bonus for opening a new account. Applications grew four- to five-fold, and fraud came with them: people opening many accounts to collect the bonus repeatedly, and accounts opened under synthetic or stolen identities. The bank has to decide, at the moment an application is submitted, which ones to send to manual review. Both mistakes cost money. A missed fraud costs about $555 in bonus, onboarding and investigation time; sending a legitimate applicant to review costs about $80 in reviewer time and lost customers.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">My role</span>
+          <p>This is a five-person team project. Each of us first wrote an individual specification of predictors to build. Mine proposed features under four hypotheses: fraud rings reuse devices, emails and referral codes; scripted applications behave differently from people; fraud follows the incentive; and fake identities contain details that don't fit together. Five of the predictors in the team's final model trace to my specification, including the disposable-email flag, one of its strongest drivers. I then worked with the team on the model build, the cost analysis and the written recommendation.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Approach</span>
+          <p>Combined application, device, email, referral and marketing records and built about 50 candidate predictors, each using only information that existed before the application was submitted, so nothing from later investigations leaks into the score. Trained a logistic regression on January 2025 to July 2026 (174,448 applications) and tested it on August 2026 (37,544 applications), a later month the model never saw. Screening, stepwise selection and a multicollinearity check reduced the candidates to 20. The review threshold was set by pricing both kinds of error and choosing the cut-off with the lowest total cost, not by a statistical rule of thumb.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Outcome so far</span>
+          <p>On the unseen month the model scored an AUC of <strong>0.88</strong> (how well it ranks fraud above legitimate applications; 0.5 is chance), against 0.61 for the bank's existing score. Reviewing the 11.5% of applications above the chosen threshold catches <strong>64%</strong> of confirmed fraud and leaves <strong>92%</strong> of legitimate applicants untouched. Estimated monthly cost of fraud plus review falls from <strong>$1.24M</strong> with no model to <strong>$0.67M</strong>, and the flagged volume fits within the review team's existing capacity.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <span class="label">What the data showed</span>
+        <p style="font-size:.97rem">Fraud is concentrated, so precision beats tightening on everyone. The riskiest 5% of applications by our score contain <strong>35.5%</strong> of all confirmed fraud. The same 5% by the bank's existing score contain 4.4%, slightly worse than picking applications at random. The signals that matter are about connections and behaviour: repeat applications from the same person, devices shared across applicants, disposable email domains and unusual session speed. Salary and credit-file measures showed no signal at all.</p>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <span class="label">Limits and what's next</span>
+        <p>The model is weaker on fraud that looks normal on the application: it catches roughly three-quarters of bonus abuse but under half of stolen-identity cases. Fraud labels for the most recent months were also still maturing when this was scored, so these figures will be restated as investigations close. Still in progress: testing tree-based models against this baseline, adding links between applications, and turning the result into a recommendation for the bank's risk committee.</p>
+      </div>
+
+      </div><!-- /proj-body -->
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div class="proj-sum">
+          <span class="label">Project</span>
           <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">What actually determines an NBA player's salary?</h3>
-          <p class="meta">Excel &middot; Regression, inference, probability modeling &middot; Summer 2026</p>
-          <p class="teaser">A five-stage statistical analysis of 513 NBA players from the 2020&ndash;21 season, built as a team project across five graduate assignments — from cleaning the raw export through to a validated multiple regression model.</p>
+          <p class="meta">Excel &middot; Python &middot; Regression, inference, probability modeling &middot; Summer&ndash;Fall 2026</p>
+          <p class="teaser">A five-stage statistical analysis of 513 NBA players from the 2020&ndash;21 season, built in Excel across five graduate assignments, then rebuilt in Python with cross-validated variable selection. Both versions reached the same answer.</p>
         </div>
         <span class="chev" aria-hidden="true">+</span>
       </summary>
@@ -378,6 +429,11 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
           <span class="label">Finding &mdash; inference</span>
           <p>Mean salary of <strong>$7,027,351</strong> tested against a claimed $6M: rejected at &alpha; = 0.05 (t = 2.571, df = 512, one-tailed p = 0.005). But the scouting benchmark of 500 points survived (t = &minus;1.613, p = 0.107) — the shortfall sat inside ordinary sampling variation. The 95% interval on mean salary, scaled to a 15-man roster, spans <strong>$93.6M to $117.2M</strong>: a $23.5M planning band.</p>
         </div>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <span class="label">Rebuilt in Python &mdash; Fall 2026</span>
+        <p style="font-size:.97rem">I returned to the same question in Python as part of a three-person team, this time letting the data choose the model. We held out a quarter of the players (384 to train, 129 to test), screened eleven candidate predictors, and ran forward, backward and stepwise selection with 10-fold cross-validation. All three methods chose the same model, and it predicted the held-out salaries slightly better than a model using all eleven predictors (test error of about $6.9M; adjusted R&sup2; of 0.53). Points and age came through again at nearly the same values: about <strong>$14,000</strong> per point scored and <strong>$626,000</strong> per year of age. The algorithm also kept effective field goal percentage, the variable I had removed by judgment in Excel. It was only marginally significant and still pointed the wrong way, so our recommendation matched the earlier call: treat points and age as the drivers, and do not read the shooting result as a market penalty for efficiency.</p>
       </div>
 
       <div class="feature-cell" style="border-top:1px solid var(--rule)">
@@ -514,7 +570,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
     </div>
     <div class="skill-group">
       <h4>Methods</h4>
-      <div class="pills"><span class="pill">Descriptive statistics</span><span class="pill">Probability modeling</span><span class="pill">Hypothesis testing</span><span class="pill">Confidence intervals</span><span class="pill">Multiple regression</span><span class="pill">Backward elimination</span></div>
+      <div class="pills"><span class="pill">Descriptive statistics</span><span class="pill">Probability modeling</span><span class="pill">Hypothesis testing</span><span class="pill">Confidence intervals</span><span class="pill">Multiple regression</span><span class="pill">Backward elimination</span><span class="pill">Logistic regression</span><span class="pill">Feature engineering</span><span class="pill">Cross-validation</span></div>
     </div>
     <div class="skill-group">
       <h4>Commercial</h4>
