@@ -380,6 +380,57 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
     <details class="proj">
       <summary>
         <div class="proj-sum">
+          <span class="label">AI project &middot; Ongoing</span>
+          <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">Adanis: an AI data analyst that a whole team shares and no one has to supervise blindly</h3>
+          <p class="meta">Claude Code &middot; Python &middot; PostgreSQL &middot; GitHub Actions &middot; Fall 2026 &middot; In progress</p>
+          <p class="teaser">An AI agent I designed and built for my five-person practicum team. It researches, analyzes, checks its own work and recommends, and it remembers the project across sessions and laptops. Every change it wants to make waits for a person to say yes.</p>
+        </div>
+        <span class="chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="proj-body">
+
+      <div class="stat-row">
+        <div class="stat"><span class="n">19</span><span class="k">written procedures it follows</span></div>
+        <div class="stat"><span class="n">5</span><span class="k">teammates on one shared memory</span></div>
+        <div class="stat"><span class="n">100%</span><span class="k">of changes need a human yes</span></div>
+        <div class="stat"><span class="n">2</span><span class="k">scheduled jobs: reminders and a weekly digest</span></div>
+      </div>
+
+      <div class="feature-body">
+        <div class="feature-cell">
+          <span class="label">Context</span>
+          <p>Our practicum team is doing a semester-long analytics project for an outside client, a professional sports team. A general AI chat tool was not enough for that. It forgets everything between sessions, each teammate gets a different answer, and nobody can tell what it checked. We needed something closer to a junior analyst on the team: one that knows the project, follows the same steps every time, and never acts on its own.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">My role</span>
+          <p>I designed and built it. I wrote the agent's rules and its nineteen procedures in plain English, decided what it may do freely and what needs approval, and directed Claude Code to write the Python tooling, which I reviewed and tested. I also set up the shared database, the scheduled reminders, and an onboarding step so a teammate can install everything by typing &ldquo;set me up.&rdquo;</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">How it works</span>
+          <p>Adanis runs on Claude Code. A rules file is read at the start of every session, and each procedure (confirm the problem, research, verify, recommend, review a deliverable, prepare for a client meeting, and so on) loads when a teammate uses its trigger phrase. Python tools handle the analytics and record keeping. A hosted PostgreSQL database holds the team's decisions, research, limits and deadlines, so what one person tells it on Monday is known on every laptop on Tuesday. Two scheduled jobs post deadline reminders and a Monday summary to the team's chat.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">The guardrails</span>
+          <p>It can research freely, but every change to a file, code, data or a model waits for approval of that specific change. It never types a password or signs in anywhere. It never contacts the client: it drafts only when asked, and a teammate reviews and sends. It refuses to calculate a metric until the team has written down what that metric means, and it will not load client data until the data-use terms are agreed.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <span class="label">The part I'd want to be asked about in an interview</span>
+        <p style="font-size:.97rem">Getting an AI to produce an answer is easy. The work was deciding how the team could trust one. So Adanis restates every request and waits for a yes before starting, re-checks each result a second way and says what it could not check, and traces every number in a deliverable back to its source before anything leaves the team. It also keeps a log of every time it pushed back on us, and whether it turned out to be right, overruled or wrong, so that at the end of the semester we can judge the agent on evidence and decide whether to redesign it.</p>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <span class="label">Status</span>
+        <p>The first phase is built and running: the rules, all nineteen procedures, shared memory, reminders, and the analytics pipeline with automated tests. The client analysis itself has not yet run on real data, because the data source and its terms of use are still being agreed. A hosted version that the team can reach directly from chat is planned as a second phase.</p>
+      </div>
+
+      </div><!-- /proj-body -->
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div class="proj-sum">
           <span class="label">Project</span>
           <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">What actually determines an NBA player's salary?</h3>
           <p class="meta">Excel &middot; Python &middot; Regression, inference, probability modeling &middot; Summer&ndash;Fall 2026</p>
@@ -558,7 +609,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
     <h3 style="font-size:clamp(1.15rem,2.2vw,1.35rem); margin-bottom:1.2rem">Tools &amp; methods</h3>
     <div class="skill-group">
       <h4>Analytics &amp; tools</h4>
-      <div class="pills"><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Excel (advanced)</span><span class="pill">Statistical analysis</span><span class="pill">PowerPoint</span><span class="pill">Google Workspace</span></div>
+      <div class="pills"><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Excel (advanced)</span><span class="pill">AI agents (Claude Code)</span><span class="pill">Git &amp; GitHub</span><span class="pill">Statistical analysis</span><span class="pill">PowerPoint</span><span class="pill">Google Workspace</span></div>
     </div>
     <div class="skill-group">
       <h4>Methods</h4>
