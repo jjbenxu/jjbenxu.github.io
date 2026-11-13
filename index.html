@@ -531,6 +531,102 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
     <details class="proj" open>
       <summary>
         <div class="proj-sum">
+          <span class="label">Live web app &middot; Predictive model &middot; Built with AI</span>
+          <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">Tour Round Predictor: PGA Tour scores and odds by player, course and weather</h3>
+          <p class="meta">Claude Code (AI coding assistant) &middot; Regression, Monte Carlo simulation, out-of-sample testing &middot; GitHub Pages &middot; November 2026</p>
+          <p class="teaser">Pick a player, a course, the weather and the wind. The site predicts the score, then plays the tournament 10,000 times to give the chance of winning the round, making the cut and winning the event. The model was tested against a full season it had never seen.</p>
+        </div>
+        <span class="chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="proj-body">
+
+      <div class="stat-row">
+        <div class="stat"><span class="n">240K</span><span class="k">professional rounds behind the model</span></div>
+        <div class="stat"><span class="n">660</span><span class="k">tournaments across four tours since 2021</span></div>
+        <div class="stat"><span class="n">10,000</span><span class="k">simulated tournaments per prediction</span></div>
+        <div class="stat"><span class="n">69%</span><span class="k">made the cut when the model said 67%</span></div>
+      </div>
+
+      <div class="feature-body">
+        <div class="feature-cell">
+          <span class="label">What it does</span>
+          <p>It answers four questions for any of 491 players at 51 PGA Tour courses: what score to expect, the chance of posting the day&rsquo;s low round, the chance of making the cut, and the chance of winning once the cut is made. Visitors can change the weather, wind speed and wind direction and watch the forecast move.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">How it works</span>
+          <p>The predicted score is course difficulty plus a weather effect plus player skill. Skill is measured in strokes against the field, with recent rounds weighted more heavily. A simulation then adds realistic round-to-round luck for every player in the field and replays the event <strong>10,000 times</strong> to turn scores into probabilities.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">How I know it is right</span>
+          <p>I held back the entire 2026 season and predicted it using only earlier results. Players the model gave a 60 to 80% chance of making the cut made it <strong>69%</strong> of the time against a forecast of <strong>67%</strong>, and cut forecasts beat a naive guess by <strong>10%</strong>. I also publish the limits: one round of golf is mostly luck, and the page says so.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Decisions I made along the way</span>
+          <p>Every idea had to earn its place in testing. Adding three more tours improved accuracy, so it stayed. Adding older seasons made course predictions worse, so it came out. The data showed no reliable sign that individual players handle wind better, so I left that out and said so on the page. Knowing what to reject matters as much as knowing what to build.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <div class="actions" style="margin-top:0">
+          <a class="btn" href="https://jjbenxu.github.io/golf-predictor/" target="_blank" rel="noopener">Try the predictor</a>
+          <a class="btn ghost" href="https://github.com/jjbenxu/golf-predictor" target="_blank" rel="noopener">View the code</a>
+        </div>
+      </div>
+
+      </div><!-- /proj-body -->
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div class="proj-sum">
+          <span class="label">Live web app &middot; Built with AI</span>
+          <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">Handicap Calculator: your golf handicap and where it ranks</h3>
+          <p class="meta">Claude Code (AI coding assistant) &middot; World Handicap System method, USGA benchmark data &middot; GitHub Pages &middot; November 2026</p>
+          <p class="teaser">Enter a few recent rounds and the site works out your handicap, shows which rounds counted, and ranks you against other golfers using the USGA&rsquo;s published figures. It also converts your handicap into the strokes you get on any course.</p>
+        </div>
+        <span class="chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="proj-body">
+
+      <div class="stat-row">
+        <div class="stat"><span class="n">3 to 20</span><span class="k">rounds needed for a result</span></div>
+        <div class="stat"><span class="n">2025</span><span class="k">USGA figures behind the ranking</span></div>
+        <div class="stat"><span class="n">3</span><span class="k">comparison groups: all golfers, men, women</span></div>
+        <div class="stat"><span class="n">0</span><span class="k">data collected; it runs in your browser</span></div>
+      </div>
+
+      <div class="feature-body">
+        <div class="feature-cell">
+          <span class="label">What it does</span>
+          <p>It turns scores into a single, comparable number. A visitor sees their handicap, the rounds that drove it, a &ldquo;top X%&rdquo; ranking with a chart of where golfers sit, and how many strokes they would receive on a course of their choice.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">How it works</span>
+          <p>Each round is adjusted for how hard the course was, so a 90 on a tough course counts for more than a 90 on an easy one. The handicap is the average of the best rounds, following the official World Handicap System. The ranking places that number on the USGA&rsquo;s published spread of handicaps.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">A lesson in data quality</span>
+          <p>My first test gave a result that made no sense: a round at a short local course implied I would score almost as well at Pebble Beach. I traced it to a course difficulty figure that booking sites had listed wrongly. The formula was right and the input was not. Checking whether an answer is plausible before trusting it is a habit I bring to every analysis.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Why it is here</span>
+          <p>It shows the other half of analytics work: taking an official method, implementing it faithfully, and presenting the result so a non-expert understands it at a glance. The page states plainly what it leaves out and that the number is an estimate.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <div class="actions" style="margin-top:0">
+          <a class="btn" href="https://jjbenxu.github.io/handicap-calculator/" target="_blank" rel="noopener">Try the calculator</a>
+          <a class="btn ghost" href="https://github.com/jjbenxu/handicap-calculator" target="_blank" rel="noopener">View the code</a>
+        </div>
+      </div>
+
+      </div><!-- /proj-body -->
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div class="proj-sum">
           <span class="label">Live web app &middot; Built with AI</span>
           <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">Blackjack Trainer: every decision graded against the mathematically best move</h3>
           <p class="meta">Claude Code (AI coding assistant) &middot; Expected-value solver, Monte Carlo simulation &middot; GitHub Pages &middot; November 2026</p>
