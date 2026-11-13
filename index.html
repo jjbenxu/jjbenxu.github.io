@@ -258,7 +258,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
     <a class="nav-name" href="#top">Junjie (Ben) Xu</a>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#work">Selected Work</a>
+      <a href="#work">Selected Work</a> <a href="#fun">Projects for Fun</a>
       <a href="#market">Market Perspective</a>
       <a href="#background">Background</a>
       <a href="#resume">Resume</a>
@@ -519,11 +519,70 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
   </div>
 </section>
 
+<!-- ============ PROJECTS FOR FUN ============ -->
+<section id="fun">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">03 — Projects for Fun</span>
+      <h2>Projects for fun</h2>
+      <p>Things I build outside coursework because I want them to exist. They also show how I put AI to work: I set the goal, the rules and the standard for &ldquo;correct,&rdquo; and an AI coding assistant writes the code.</p>
+    </div>
+
+    <details class="proj" open>
+      <summary>
+        <div class="proj-sum">
+          <span class="label">Live web app &middot; Built with AI</span>
+          <h3 style="font-size:clamp(1.25rem,2.5vw,1.6rem)">Blackjack Trainer: every decision graded against the mathematically best move</h3>
+          <p class="meta">Claude Code (AI coding assistant) &middot; Expected-value solver, Monte Carlo simulation &middot; GitHub Pages &middot; November 2026</p>
+          <p class="teaser">A browser game where you play blackjack one-on-one against the dealer and a built-in coach scores each move. I went from the question &ldquo;would this be hard to build?&rdquo; to a tested, public web app in a single day.</p>
+        </div>
+        <span class="chev" aria-hidden="true">+</span>
+      </summary>
+      <div class="proj-body">
+
+      <div class="stat-row">
+        <div class="stat"><span class="n">1 day</span><span class="k">from idea to live, tested app</span></div>
+        <div class="stat"><span class="n">3M</span><span class="k">simulated hands used to check the solver</span></div>
+        <div class="stat"><span class="n">0.5%</span><span class="k">house edge under perfect play, as expected</span></div>
+        <div class="stat"><span class="n">5</span><span class="k">adjustable casino table rules</span></div>
+      </div>
+
+      <div class="feature-body">
+        <div class="feature-cell">
+          <span class="label">What it does</span>
+          <p>You bet, play your hand and get immediate feedback: whether the move was the best one, what each option was worth on average, and what a mistake cost in chips. It tracks accuracy over a session, keeps a list of recent mistakes, and produces a full strategy chart for whichever table rules you choose, with the casino-standard eight-deck shoe as the default.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">How I used AI</span>
+          <p>I am not a software engineer, and this project did not need me to be one. I briefed the AI assistant the way I would brief an analyst: what the product should do, which casino rules to follow, and what users should see. Then I tested the result myself and sent it back for changes, including a layout rework so the whole game fits on one screen.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">How I know it is right</span>
+          <p>A strategy coach that gives wrong advice is worse than none. Before publishing, the solver was checked two ways: its strategy chart against published basic strategy, and a <strong>3-million-hand</strong> simulation of perfect play, which returned a house edge of about <strong>0.5%</strong>, in line with the known figure for these rules.</p>
+        </div>
+        <div class="feature-cell">
+          <span class="label">Why it is here</span>
+          <p>AI makes building fast. The part that still takes judgment is deciding what to build, defining what &ldquo;correct&rdquo; means and insisting on evidence before trusting the output. That is the same discipline I apply to a model or a dashboard, and it is how I expect to use AI in an analytics role.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell" style="border-top:1px solid var(--rule)">
+        <div class="actions" style="margin-top:0">
+          <a class="btn" href="https://jjbenxu.github.io/blackjack-trainer/" target="_blank" rel="noopener">Play the game</a>
+          <a class="btn ghost" href="https://github.com/jjbenxu/blackjack-trainer" target="_blank" rel="noopener">View the code</a>
+        </div>
+      </div>
+
+      </div><!-- /proj-body -->
+    </details>
+  </div>
+</section>
+
 <!-- ============ COMMERCIAL AWARENESS ============ -->
 <section id="market">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">03 — Market Perspective</span>
+      <span class="eyebrow">04 — Market Perspective</span>
       <h2>How I read the market</h2>
       <p>Three things I pay attention to in healthcare, pharma, and financial services — and why the NBA project above is more relevant to them than it first appears.</p>
     </div>
@@ -554,7 +613,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
 <section id="background">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">04 — Background</span>
+      <span class="eyebrow">05 — Background</span>
       <h2>Education &amp; experience</h2>
     </div>
 
@@ -630,7 +689,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
 <section id="resume">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">05 — Resume</span>
+      <span class="eyebrow">06 — Resume</span>
       <h2>Resume</h2>
       <p>Readable on screen below, and downloadable as a PDF.</p>
     </div>
@@ -657,7 +716,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold); outline-offset
 <section id="contact">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">06 — Contact</span>
+      <span class="eyebrow">07 — Contact</span>
       <h2>Get in touch</h2>
       <p class="lede">Open to conversations about analytics roles in healthcare, pharmaceuticals, and financial services.</p>
     </div>
